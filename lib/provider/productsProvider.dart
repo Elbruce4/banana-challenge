@@ -46,6 +46,7 @@ logInVerification (emailControler , passwordControler , formKey , context ) asyn
 
     _loading = true;
     try {
+      //Se decide invocar tres veces esta variable por que es más eficaz que crear una nueva función asyncrónica y llamarla
       Dio dio = await getDio(context);
       var response = await dio.get("https://dummyjson.com/products");
       _products = response.data;
@@ -61,6 +62,7 @@ logInVerification (emailControler , passwordControler , formKey , context ) asyn
   
   
     try {
+      //Se decide invocar tres veces esta variable por que es más eficaz que crear una nueva función asyncrónica y llamarla
       Dio dio = await getDio(context);
       var response = await dio.get('https://dummyjson.com/products/$id');
       _product = response.data;
@@ -76,15 +78,13 @@ logInVerification (emailControler , passwordControler , formKey , context ) asyn
     _loading = true;
     notifyListeners();
     try {
+      //Se decide invocar tres veces esta variable por que es más eficaz que crear una nueva función asyncrónica y llamarla
       Dio dio = await getDio(context);
       var response = await dio.get('https://dummyjson.com/products/search?q=$input');
-      print(response.data["products"]);
       if(response.data["products"].isEmpty) {
         _noProduct = 'No se encontraron resultados para $input';
-        _products = response.data;
-      } else {
-        _products = response.data;
-      }
+      } 
+      _products = response.data;
       notifyListeners();
     } catch (e) {
       //return e;  

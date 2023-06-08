@@ -18,7 +18,7 @@ class _LoadingSpinnerState extends State<LoadingSpinner> {
     
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Container(
+      body: SizedBox(
         height: mediaHeight(context, 1),
         child: Center(
           child: Image.asset(

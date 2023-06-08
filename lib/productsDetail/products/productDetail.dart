@@ -1,9 +1,10 @@
-import 'package:bananachallenge/Api/products/index.dart';
 import 'package:bananachallenge/loading/index.dart';
 import 'package:bananachallenge/sizes/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+
+import 'getProduct.dart';
 
 class ProductDetail extends StatefulWidget {
 
@@ -27,23 +28,14 @@ class _ProductDetailState extends State<ProductDetail> {
 
   bool loading = true;
 
-  getProduct () async {
-
-    try {
-      await widget.getOneProductById(context , widget.id);
-    } catch (e) {
-      return e;
-    }
-    
-    setState(() {
-      loading = false;
-    });
-  }
 
   @override
   void initState() {
     super.initState();
-    getProduct();
+    getProduct(widget.getOneProductById , context , widget.id);
+    setState(() {
+      loading = false;
+    });
   }
 
   @override
@@ -76,15 +68,14 @@ class _ProductDetailState extends State<ProductDetail> {
                               frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
                                 return child;
                                 },
-                                loadingBuilder: (context, child, loadingProgress) {
-                                if (loadingProgress == null) {
-                                return child;
-                                } else {
-                                return const Center(
-                                child: CircularProgressIndicator(),
-                                );
+                                loadingBuilder:(context, child, loadingProgress) {
+                                  if (loadingProgress != null) {
+                                    return CircularProgressIndicator(
+                                            value: loadingProgress.cumulativeBytesLoaded /
+                                            loadingProgress.expectedTotalBytes!);
+                                  }
+                                  return child;
                                 }
-                              }
                             ) 
                           )
                       ],
@@ -133,7 +124,7 @@ class _ProductDetailState extends State<ProductDetail> {
                 width: mediaWidth(context, 0.9),
                 child: ElevatedButton(
                   onPressed: () {}, 
-                  child: Text("Agregar al carrito")
+                  child: const Text("Agregar al carrito")
                 ),
               )
             ],

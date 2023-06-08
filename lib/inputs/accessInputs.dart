@@ -7,7 +7,7 @@ import '../sizes/index.dart';
 class AccessInputs extends StatefulWidget {
 
   String label;
-  var controler;
+  TextEditingController controler;
   Function validate;
   bool password;
 

@@ -17,6 +17,9 @@ class SearchInput extends StatefulWidget {
 }
 
 class _SearchInputState extends State<SearchInput> {
+
+  TextEditingController controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,6 +28,7 @@ class _SearchInputState extends State<SearchInput> {
         onFieldSubmitted: (strings) {
           widget.filter(context , strings);
         },
+        controller: controller,
         keyboardType: TextInputType.text,
         style: TextStyle(
           decoration: TextDecoration.none, 
@@ -39,7 +43,9 @@ class _SearchInputState extends State<SearchInput> {
                 Icons.search_outlined  ,
                 color: Colors.black,
               ),
-            onPressed: () {  },
+            onPressed: () { 
+              widget.filter(context , controller.text);
+            },
           ),
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(

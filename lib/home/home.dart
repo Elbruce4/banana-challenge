@@ -1,4 +1,3 @@
-import 'package:bananachallenge/Api/products/index.dart';
 import 'package:bananachallenge/loading/index.dart';
 import 'package:bananachallenge/provider/productsProvider.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,7 +7,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 
 import '../inputs/serachInput.dart';
-import '../productsDetail/products/productCard.dart';
+import 'productCard.dart';
 import 'homeFuncs.dart';
 
 class Home extends StatefulWidget {
