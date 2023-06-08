@@ -43,15 +43,16 @@ class _ProductCardState extends State<ProductCard> {
             boxShadow: <BoxShadow>[
               BoxShadow(
                 color: Colors.black54,
-                blurRadius: 10.0,
+                blurRadius: 35.0,
                 spreadRadius: -20.0,
-                offset: Offset(-15, 15),
+                offset: Offset(0, 15),
               )
             ],
             border: Border.all(
               width: mediaWidth(context , 0.002),
-              color: Color.fromARGB(255, 0, 0, 0)
+              color: Color.fromARGB(255, 202, 202, 202)
             ),
+            borderRadius: BorderRadius.circular(mediaWidth(context, 0.02)),
             color: Colors.white
           ),
           child: Column(
