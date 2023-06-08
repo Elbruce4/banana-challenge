@@ -4,8 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:provider/provider.dart';
 
 import '../inputs/accessInputs.dart';
+import '../provider/productsProvider.dart';
 import 'logInAccess.dart';
 
 class LogIn extends StatefulWidget {
@@ -21,19 +23,17 @@ class _LogInState extends State<LogIn> {
   final passwordControler = TextEditingController();
   //Validator of data on the form
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  bool loadingCreedentials = false;
 
   
 
   @override
   Widget build(BuildContext context) {
 
-    changeLoader () {
-      setState(() {
-        loadingCreedentials = !loadingCreedentials;
-      });
-    }
+
     final isKeyBoard = MediaQuery.of(context).viewInsets.bottom != 0;
+    final logInVerification = context.read<ProductsProvider>().logInVerification;
+    final loading = context.watch<ProductsProvider>().loading;
+
     return Scaffold(
       
       body: Container(
@@ -83,9 +83,9 @@ class _LogInState extends State<LogIn> {
                         width: mediaWidth(context, 0.95),
                         child: ElevatedButton(
                           onPressed: () {
-                            logInVerification (emailControler , passwordControler , formKey , context , changeLoader);
+                            logInVerification (emailControler , passwordControler , formKey , context );
                           }, 
-                          child: loadingCreedentials ? 
+                          child: loading ? 
                           const Center(
                             child: CircularProgressIndicator(
                               color: Colors.white,

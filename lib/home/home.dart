@@ -32,26 +32,9 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  //var data;
-  //bool loading = false;
-
   getData () async {
-/*     setState(() {
-      loading = true;
-    }); */
     await widget.getProducts(context);
-/*     setState(() {
-      loading = false;
-    }); */
   }
-
-/*   changeLoader () {
-    print("Entra a la func00");
-
-      loading = !loading;
-
-    print("Entra a la func01");
-  } */
 
   @override
   void initState() {
@@ -69,7 +52,7 @@ class _HomeState extends State<Home> {
       ),
       body: 
       widget.loading ?
-      LoadingSpinner()
+      const LoadingSpinner()
       : SingleChildScrollView(
         
         child: widget.products["products"] == null || widget.products["products"].isEmpty ?
@@ -90,7 +73,6 @@ class _HomeState extends State<Home> {
             SearchInput(
               filter: widget.filterByName,
             ),
-            
             for(var i = 0; i < widget.products["products"].length; i++)
             ProductCard(
                 title: widget.products["products"][i]["title"], 

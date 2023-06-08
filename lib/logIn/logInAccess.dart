@@ -3,9 +3,9 @@ import 'package:bananachallenge/toast/index.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-logInVerification (emailControler , passwordControler , formKey , context , loading) async {
+/* logInVerification (emailControler , passwordControler , formKey , context , loading) async {
   
-  loading();
+
   if(emailControler.text != "" && passwordControler.text != "") {
     final form = formKey.currentState!;
       if(form.validate()){
@@ -22,6 +22,8 @@ logInVerification (emailControler , passwordControler , formKey , context , load
   } else {
     showToast("Debes completar todos los campos para loguearte", "warning", 5, context);
   }
-  loading();
 
-}
+
+} */
+
+
