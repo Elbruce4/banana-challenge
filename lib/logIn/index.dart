@@ -8,7 +8,6 @@ import 'package:provider/provider.dart';
 
 import '../inputs/accessInputs.dart';
 import '../provider/productsProvider.dart';
-import 'logInAccess.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({super.key});
@@ -21,7 +20,7 @@ class _LogInState extends State<LogIn> {
   
   final emailControler = TextEditingController();
   final passwordControler = TextEditingController();
-  //Validator of data on the form
+
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   
@@ -29,9 +28,10 @@ class _LogInState extends State<LogIn> {
   @override
   Widget build(BuildContext context) {
 
-
+    // Verificar si el teclado esta abierto o no para manejar estilos
     final isKeyBoard = MediaQuery.of(context).viewInsets.bottom != 0;
-    final logInVerification = context.read<ProductsProvider>().logInVerification;
+
+    final Function logInVerification = context.read<ProductsProvider>().logInVerification;
     final loading = context.watch<ProductsProvider>().loading;
 
     return Scaffold(

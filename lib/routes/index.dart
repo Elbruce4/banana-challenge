@@ -1,10 +1,9 @@
 
 
 import 'package:bananachallenge/home/ExtractHomeArgs.dart';
-import 'package:bananachallenge/home/products/productDetail.dart';
 
 import '../home/home.dart';
-import '../home/products/ExtractArgsOfProduct.dart';
+import '../productDetail/products/ExtractArgsOfProduct.dart';
 
 getRoutes (context) {
   return {

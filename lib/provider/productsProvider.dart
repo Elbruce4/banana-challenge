@@ -19,7 +19,6 @@ class ProductsProvider extends ChangeNotifier {
 
 logInVerification (emailControler , passwordControler , formKey , context ) async {
   
-  print("Entra al provider");
   _loading = true;
   notifyListeners();
   if(emailControler.text != "" && passwordControler.text != "") {
@@ -29,14 +28,14 @@ logInVerification (emailControler , passwordControler , formKey , context ) asyn
           "username" : emailControler.text,
           "password" : passwordControler.text
         });
-        if(response is DioError) {
+        if(response is DioException) {
           showToast("Creedenciales incorrectas", "error", 2, context);
         } else {
           Navigator.pushNamed(context, "listOfProducts");
         }
       } 
   } else {
-    showToast("Debes completar todos los campos para loguearte", "warning", 5, context);
+    showToast("Debes completar todos los campos para loguearte", "warning", 2, context);
   }
   _loading = false;
   notifyListeners();
@@ -81,11 +80,9 @@ logInVerification (emailControler , passwordControler , formKey , context ) asyn
       var response = await dio.get('https://dummyjson.com/products/search?q=$input');
       print(response.data["products"]);
       if(response.data["products"].isEmpty) {
-        print("Entro acá");
         _noProduct = 'No se encontraron resultados para $input';
         _products = response.data;
       } else {
-        print("fue al otro lado");
         _products = response.data;
       }
       notifyListeners();

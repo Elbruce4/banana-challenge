@@ -1,5 +1,4 @@
 import 'package:bananachallenge/Api/products/index.dart';
-import 'package:bananachallenge/home/products/productCard.dart';
 import 'package:bananachallenge/loading/index.dart';
 import 'package:bananachallenge/provider/productsProvider.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,6 +8,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 
 import '../inputs/serachInput.dart';
+import '../productsDetail/products/productCard.dart';
+import 'homeFuncs.dart';
 
 class Home extends StatefulWidget {
 
@@ -32,14 +33,10 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  getData () async {
-    await widget.getProducts(context);
-  }
-
   @override
   void initState() {
     super.initState();
-    getData();
+    getData(widget.getProducts , context);
   }
 
   @override
