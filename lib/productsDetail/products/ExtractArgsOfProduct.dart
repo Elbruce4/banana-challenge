@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../../provider/productsProvider.dart';
 
+//CREO ESTE WIDGET PARA PODER PASARLE AL WIDGET HIJO LOS DATOS DEL PROVIDER Y ACCEDER A ELLOS ANTES DEL BUILD
 class ExtractArgsProduct extends StatefulWidget {
   const ExtractArgsProduct({super.key});
 

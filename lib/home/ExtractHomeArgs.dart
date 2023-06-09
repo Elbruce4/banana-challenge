@@ -4,7 +4,8 @@ import 'package:provider/provider.dart';
 
 import '../provider/productsProvider.dart';
 
-//CREO ESTE WIDGET PARA PODER PASARLE AL WIDGET HIJO LOS DATOS DEL PROVIDER. HAGO ESTO YA QUE EN EL INIT STATE NO TENGO ACCESO AL CONTEXT
+//CREO ESTE WIDGET PARA PODER PASARLE AL WIDGET HIJO LOS DATOS DEL PROVIDER Y ACCEDER A ELLOS ANTES DEL BUILD
+
 class ExtractHomeArgs extends StatefulWidget {
   const ExtractHomeArgs({super.key});
 

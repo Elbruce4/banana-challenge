@@ -8,15 +8,6 @@ import 'package:provider/provider.dart';
 
 void main() {
   runApp(
-/*     ChangeNotifierProvider(
-      create: (_) => MultiProvider(providers: [
-
-      ],),
-      child: const MyApp(),
-    
-    ) */
-    
-
     MultiProvider(
       providers: [
         ChangeNotifierProvider (create: (_) => ProductsProvider()),
@@ -56,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     
-    return Scaffold(
+    return const Scaffold(
 
       body: Center(
         child: LogIn()
