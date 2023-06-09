@@ -6,6 +6,8 @@ import 'package:flutter/src/widgets/framework.dart';
 
 import 'getProduct.dart';
 
+
+
 class ProductDetail extends StatefulWidget {
 
   num id;
@@ -26,22 +28,20 @@ class ProductDetail extends StatefulWidget {
 
 class _ProductDetailState extends State<ProductDetail> {
 
-  bool loading = true;
 
 
   @override
   void initState() {
     super.initState();
     getProduct(widget.getOneProductById , context , widget.id);
-    setState(() {
-      loading = false;
-    });
+
+
   }
 
   @override
   Widget build(BuildContext context) {
     
-    return loading ? LoadingSpinner() : Scaffold(
+    return widget.loading ? LoadingSpinner() : Scaffold(
       appBar: AppBar(
         title: Text(widget.product["title"]),
       ),
@@ -71,8 +71,8 @@ class _ProductDetailState extends State<ProductDetail> {
                                 loadingBuilder:(context, child, loadingProgress) {
                                   if (loadingProgress != null) {
                                     return CircularProgressIndicator(
-                                            value: loadingProgress.cumulativeBytesLoaded /
-                                            loadingProgress.expectedTotalBytes!);
+                                      value: loadingProgress.cumulativeBytesLoaded /
+                                      loadingProgress.expectedTotalBytes!);
                                   }
                                   return child;
                                 }

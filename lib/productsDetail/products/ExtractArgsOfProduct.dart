@@ -20,7 +20,7 @@ class _ExtractArgsProductState extends State<ExtractArgsProduct> {
 
     final arguments = ModalRoute.of(context)!.settings.arguments as num;
     final product = context.watch<ProductsProvider>().product;
-    final loading = context.watch<ProductsProvider>().loading;
+    final loading = context.watch<ProductsProvider>().specialLoading;
     final getOneProductById = context.read<ProductsProvider>().getOneProductById;
 
     return ProductDetail(

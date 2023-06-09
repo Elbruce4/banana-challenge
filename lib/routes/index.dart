@@ -3,7 +3,7 @@
 import 'package:bananachallenge/home/ExtractHomeArgs.dart';
 
 import '../home/home.dart';
-import '../productDetail/products/ExtractArgsOfProduct.dart';
+import '../productsDetail/products/ExtractArgsOfProduct.dart';
 
 getRoutes (context) {
   return {

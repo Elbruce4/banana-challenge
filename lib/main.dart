@@ -1,5 +1,6 @@
 import 'package:bananachallenge/color/index.dart';
-import 'package:bananachallenge/logIn/index.dart';
+import 'package:bananachallenge/logIn/view.dart';
+import 'package:bananachallenge/provider/logIn.dart';
 import 'package:bananachallenge/provider/productsProvider.dart';
 import 'package:bananachallenge/routes/index.dart';
 import 'package:flutter/material.dart';
@@ -7,11 +8,22 @@ import 'package:provider/provider.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => ProductsProvider(),
+/*     ChangeNotifierProvider(
+      create: (_) => MultiProvider(providers: [
+
+      ],),
       child: const MyApp(),
     
-    )
+    ) */
+    
+
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider (create: (_) => ProductsProvider()),
+        ChangeNotifierProvider (create: (_) => LogInProvider()),
+      ],
+    child: const MyApp(),
+    ),
   );
 }
 

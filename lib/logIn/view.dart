@@ -1,4 +1,6 @@
+import 'package:bananachallenge/logIn/logInVerification.dart';
 import 'package:bananachallenge/logIn/validations.dart';
+import 'package:bananachallenge/provider/logIn.dart';
 import 'package:bananachallenge/sizes/index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -30,9 +32,8 @@ class _LogInState extends State<LogIn> {
 
     // Verificar si el teclado esta abierto o no para manejar estilos
     final isKeyBoard = MediaQuery.of(context).viewInsets.bottom != 0;
-
-    final Function logInVerification = context.read<ProductsProvider>().logInVerification;
-    final loading = context.watch<ProductsProvider>().loading;
+    final logInVerification = context.watch<LogInProvider>().logInVerification;
+    final loading = context.watch<LogInProvider>().loading;
 
     return Scaffold(
       
@@ -83,7 +84,7 @@ class _LogInState extends State<LogIn> {
                         width: mediaWidth(context, 0.95),
                         child: ElevatedButton(
                           onPressed: () {
-                            logInVerification (emailControler , passwordControler , formKey , context );
+                            logInVerification (emailControler , passwordControler , formKey , context);
                           }, 
                           child: loading ? 
                           const Center(

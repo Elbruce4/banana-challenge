@@ -10,37 +10,14 @@ class ProductsProvider extends ChangeNotifier {
   Map _product = {};
   String _noProduct = "";
   bool _loading = false;
+  //para intentar lograr de cargar el loader en productDetail cree un nuevo booleano pero no resulto
+  bool _specialLoading = true;
 
   Map get products =>  _products;
   Map get product =>  _product;
   String get noProduct => _noProduct;
   bool get loading => _loading;
-
-
-logInVerification (emailControler , passwordControler , formKey , context ) async {
-  
-  _loading = true;
-  notifyListeners();
-  if(emailControler.text != "" && passwordControler.text != "") {
-    final form = formKey.currentState!;
-      if(form.validate()){
-        var response = await logIn(context, {
-          "username" : emailControler.text,
-          "password" : passwordControler.text
-        });
-        if(response is DioException) {
-          showToast("Creedenciales incorrectas", "error", 2, context);
-        } else {
-          Navigator.pushNamed(context, "listOfProducts");
-        }
-      } 
-  } else {
-    showToast("Debes completar todos los campos para loguearte", "warning", 2, context);
-  }
-  _loading = false;
-  notifyListeners();
-
-}
+  bool get specialLoading => _specialLoading;
 
   Future<void> getAllProducts(context) async {
 
@@ -60,7 +37,7 @@ logInVerification (emailControler , passwordControler , formKey , context ) asyn
 
   Future<void> getOneProductById(context , id) async {
   
-  
+
     try {
       //Se decide invocar tres veces esta variable por que es más eficaz que crear una nueva función asyncrónica y llamarla
       Dio dio = await getDio(context);
@@ -70,6 +47,8 @@ logInVerification (emailControler , passwordControler , formKey , context ) asyn
     } catch (e) {
       //return e;  
     }
+    _specialLoading = false;
+    notifyListeners();
 
   }
 
